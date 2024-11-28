@@ -4,8 +4,12 @@ link.rel  = 'stylesheet';
 link.type = 'text/css';
 link.href = chrome.extension.getURL('css_dark.css');
 
-document.head.appendChild(link);
-
 const observer = new MutationObserver(() => link.parentNode == null && document.head.appendChild(link));
 
-observer.observe(document, { childList: true, subtree: true });
+setTimeout(() => {
+    document.head.appendChild(link);
+    document.body.style.background = '#000';
+    observer.observe(document, { childList: true, subtree: true });
+}, 0);
+
+window.addEventListener('load', () => void document.body.style.removeProperty('background'));
