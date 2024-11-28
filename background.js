@@ -12,4 +12,4 @@ setTimeout(() => {
     observer.observe(document, { childList: true, subtree: true });
 }, 0);
 
-window.addEventListener('load', () => void document.body.style.removeProperty('background'));
+window.addEventListener('load', () => void document.body.style.removeProperty('background'), { passive: true, once: true });
